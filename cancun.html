@@ -14,7 +14,7 @@ body{margin:0;font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);bac
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
 header{background:var(--black);color:#fff}
-.hdr{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
+.hdr{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;padding-bottom:18px}
 .brand{display:flex;align-items:center;gap:14px}
 .brand img{width:52px;height:45px;object-fit:contain}
 .brand b{font-size:26px;letter-spacing:-.02em}
@@ -63,7 +63,7 @@ h1 em{font-style:normal;color:var(--orange)}
 .pair b{font-size:34px;font-weight:800}
 .pair .s b{color:var(--orange)}
 .note{margin-top:18px;font-size:12px;color:var(--muted)}
-.sec{padding:72px 0 24px}
+.sec{padding-top:72px;padding-bottom:24px}
 .eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.14em}
 .eyebrow:before{content:"";width:28px;height:4px;border-radius:2px;background:var(--orange)}
 h2.t{margin:12px 0 0;font-size:36px;line-height:1.15;font-weight:800;letter-spacing:-.02em}
@@ -73,7 +73,7 @@ h2.t{margin:12px 0 0;font-size:36px;line-height:1.15;font-weight:800;letter-spac
 .oc .v{display:flex;gap:24px;text-align:right}
 .oc small{display:block;font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--muted)}
 .oc b{font-size:24px;font-weight:800}
-.loc{display:flex;flex-wrap:wrap;gap:32px;padding:56px 0 72px}
+.loc{display:flex;flex-wrap:wrap;gap:32px;padding-top:56px;padding-bottom:72px}
 .info{flex:1 1 380px;min-width:0;background:#fff;border:1px solid var(--line);border-radius:28px;padding:36px}
 .info h2{margin:12px 0 0;font-size:30px;line-height:1.2;font-weight:800;letter-spacing:-.02em}
 .row{display:flex;gap:16px;align-items:flex-start;font-size:15px;line-height:1.6;margin-top:22px}
@@ -87,7 +87,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;
 footer nav{display:flex;flex-wrap:wrap;gap:24px}
 @media (max-width:760px){
 .wrap{padding:0 20px}
-.hdr{padding:12px 0;gap:8px}
+.hdr{padding-top:12px;padding-bottom:12px;gap:8px}
 .brand img{width:42px;height:36px}.brand b{font-size:20px}.brand span{display:block;margin:0;font-size:10px}
 .brand{gap:10px}
 .menu{display:none;order:5;width:100%;flex-direction:column;align-items:stretch;gap:14px;padding:12px 0 8px;margin:0}
@@ -106,12 +106,12 @@ h1{font-size:34px}
 .card{padding:22px 18px;border-radius:24px}
 .rate{padding:16px;margin-top:14px}.rate .n{font-size:15px}.sym{width:34px;height:34px;font-size:16px}
 .pair{gap:10px}.pair>div{padding:12px 14px}.pair b{font-size:28px}
-.sec{padding:44px 0 8px}
+.sec{padding-top:44px;padding-bottom:8px}
 h2.t{font-size:26px}
 .grid{margin-top:22px;gap:12px}
 .oc{padding:16px 18px;flex-direction:column;align-items:stretch;gap:12px}
 .oc .v{justify-content:space-between;text-align:left}.oc b{font-size:22px}
-.loc{padding:36px 0 44px;gap:20px}
+.loc{padding-top:36px;padding-bottom:44px;gap:20px}
 .info{padding:24px 20px;border-radius:24px}.info h2{font-size:23px}
 .row{font-size:14px;margin-top:18px}
 .map{min-height:300px;border-radius:24px}
@@ -234,6 +234,12 @@ document.getElementById('burger').addEventListener('click', function(){
   var m = document.getElementById('menu');
   var open = m.classList.toggle('open');
   this.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+document.querySelectorAll('#menu a').forEach(function(a){
+  a.addEventListener('click', function(){
+    document.getElementById('menu').classList.remove('open');
+    document.getElementById('burger').setAttribute('aria-expanded', 'false');
+  });
 });
 try { var saved = localStorage.getItem('eurodolar-lang'); if (saved === 'en' || saved === 'es') lang = saved; } catch (e) {}
 render();

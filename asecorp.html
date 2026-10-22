@@ -15,7 +15,7 @@ a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
 .reg{background:var(--deep);color:#c9dadd;font-size:12px;line-height:1.5;padding:10px 0;text-align:center}
 header{background:#fff;border-bottom:1px solid var(--line)}
-.hdr{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
+.hdr{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;padding-bottom:18px}
 .brand{display:flex;align-items:center;gap:14px;font-size:24px;font-weight:800;letter-spacing:-.01em;color:var(--p)}
 .logo{width:48px;height:48px;border-radius:12px;background:var(--p);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;letter-spacing:.08em}
 .menu{display:flex;align-items:center;gap:28px;font-size:15px;font-weight:600}
@@ -49,7 +49,7 @@ h1{margin:18px 0 0;font-size:54px;line-height:1.05;font-weight:800;letter-spacin
 .coin .v{display:flex;gap:28px;text-align:right}
 .coin .v small{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted)}
 .coin .v b{font-size:26px;font-weight:800;color:var(--p)}
-.sec{padding:88px 0 24px}
+.sec{padding-top:88px;padding-bottom:24px}
 .eyebrow{font-size:13px;font-weight:800;letter-spacing:.14em;color:var(--p)}
 h2.t{margin:10px 0 0;font-size:38px;line-height:1.15;font-weight:800;letter-spacing:-.02em}
 .cols{margin-top:36px;display:flex;flex-wrap:wrap;gap:24px}
@@ -62,10 +62,10 @@ h2.t{margin:10px 0 0;font-size:38px;line-height:1.15;font-weight:800;letter-spac
 .calc h2{margin:10px 0 0;font-size:36px;line-height:1.15;font-weight:800;letter-spacing:-.02em}
 .calc p{margin:14px 0 0;font-size:16px;line-height:1.6;color:#cfe3e6}
 .form{flex:1 1 420px;min-width:0;background:#fff;color:var(--ink);border-radius:16px;padding:28px;display:flex;flex-wrap:wrap;gap:16px}
-.f{flex:1 1 160px;display:flex;flex-direction:column;gap:6px}
+.f{flex:1 1 160px;min-width:0;display:flex;flex-direction:column;gap:6px}
 .f.full{flex-basis:100%}
 .f label{font-size:13px;font-weight:700;color:var(--muted)}
-.f input,.f select{border:1px solid #b9c9cb;border-radius:10px;padding:14px 16px;font-size:16px;font-weight:600;font-family:inherit;color:var(--ink);background:#fff}
+.f input,.f select{width:100%;min-width:0;border:1px solid #b9c9cb;border-radius:10px;padding:14px 16px;font-size:16px;font-weight:600;font-family:inherit;color:var(--ink);background:#fff}
 .f input{font-size:18px;font-weight:700}
 .res{flex-basis:100%;background:#e3f0f1;border-radius:12px;padding:16px 18px;font-size:15px;color:#2a4146;min-height:56px}
 .res b{display:block;font-size:26px;color:var(--p);margin-top:2px}
@@ -86,7 +86,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:24px}
 @media (max-width:760px){
 .wrap{padding:0 20px}
 .reg{font-size:11px}
-.hdr{padding:12px 0}
+.hdr{padding-top:12px;padding-bottom:12px}
 .brand{font-size:22px;gap:12px}.logo{width:40px;height:40px}
 .menu{display:none;order:5;width:100%;flex-direction:column;align-items:stretch;gap:14px;padding:8px 0}
 .menu.open{display:flex}.menu a{padding:6px 0}
@@ -97,7 +97,7 @@ h1{font-size:34px}.lead{font-size:16px}
 .board{padding:22px 18px}.tr>div:first-child{font-size:14px}.tr>div:not(:first-child){font-size:16px}
 .coins{padding-top:16px;gap:12px}
 .coin{padding:18px;flex-direction:column;align-items:stretch;gap:12px}.coin .v{justify-content:space-between;text-align:left}.coin .v b{font-size:22px}
-.sec{padding:48px 0 8px}h2.t{font-size:28px}
+.sec{padding-top:48px;padding-bottom:8px}h2.t{font-size:28px}
 .cols{margin-top:22px;gap:14px}.pil{padding:24px 20px}
 .calc{padding:28px 18px;border-radius:20px;gap:20px}.calc h2{font-size:26px}
 .form{padding:18px}
@@ -204,7 +204,7 @@ var COINS = [
   {name:'Centenario oro', unit:'Moneda de colección', buy:'$81,000', sell:'$110,000'},
   {name:'Onza Libertad', unit:'Plata', buy:'$1,000', sell:'$1,950'}
 ];
-function money(n){return '$' + n.toFixed(2)}
+function money(n){return '$' + n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}
 document.getElementById('rates').innerHTML = RATES.map(function(r){
   return '<div class="tr"><div>'+r.name+'</div><div>'+money(r.buy)+'</div><div>'+money(r.sell)+'</div></div>';
 }).join('');
@@ -235,6 +235,12 @@ calc();
 document.getElementById('burger').addEventListener('click', function(){
   var open = document.getElementById('menu').classList.toggle('open');
   this.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+document.querySelectorAll('#menu a').forEach(function(a){
+  a.addEventListener('click', function(){
+    document.getElementById('menu').classList.remove('open');
+    document.getElementById('burger').setAttribute('aria-expanded', 'false');
+  });
 });
 </script>
 </body>
