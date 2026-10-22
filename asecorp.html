@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Asecorp Centro Cambiario (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--p:#0E4A52;--a:#F2A33A;--paper:#f4f7f7;--line:#dbe5e6;--muted:#4a5f63;--ink:#14282c;--deep:#0a2a30}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.reg{background:var(--deep);color:#c9dadd;font-size:12px;line-height:1.5;padding:10px 0;text-align:center}
+header{background:#fff;border-bottom:1px solid var(--line)}
+.hdr{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
+.brand{display:flex;align-items:center;gap:14px;font-size:24px;font-weight:800;letter-spacing:-.01em;color:var(--p)}
+.logo{width:48px;height:48px;border-radius:12px;background:var(--p);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;letter-spacing:.08em}
+.menu{display:flex;align-items:center;gap:28px;font-size:15px;font-weight:600}
+.btn{display:inline-block;border-radius:10px;font-weight:800;font-size:16px;padding:16px 28px;text-align:center}
+.btn.a{background:var(--a);color:var(--ink)}
+.btn.p{background:var(--p);color:#fff}
+.btn.o{border:2px solid #fff;color:#fff;padding:14px 28px;font-weight:700}
+.menu .btn{padding:12px 22px;font-size:15px}
+.burger{display:none;width:44px;height:44px;border:1px solid #b9c9cb;border-radius:12px;background:#fff;align-items:center;justify-content:center;cursor:pointer}
+.hero{background:var(--p);color:#fff}
+.hero .wrap{display:flex;flex-wrap:wrap;gap:48px;align-items:center;padding-top:72px;padding-bottom:96px}
+.hero .l{flex:1 1 480px;min-width:0}
+.kicker{font-size:13px;font-weight:800;letter-spacing:.16em;color:var(--a)}
+h1{margin:18px 0 0;font-size:54px;line-height:1.05;font-weight:800;letter-spacing:-.025em}
+.lead{margin:22px 0 0;font-size:19px;line-height:1.6;color:#cfe3e6;max-width:520px}
+.ctas{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px}
+.board{flex:1 1 440px;min-width:0;background:#fff;color:var(--ink);border-radius:20px;padding:30px}
+.board .top{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:800;letter-spacing:.1em;color:var(--p)}
+.board .top span{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:0}
+.tr{display:flex;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.tr.h{padding:20px 0 10px;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);border-bottom:2px solid var(--p)}
+.tr>div:first-child{flex:2;font-size:16px;font-weight:700;padding-right:8px}
+.tr.h>div:first-child{font-size:11px;font-weight:700}
+.tr>div:not(:first-child){flex:1;text-align:right;font-size:18px;font-weight:700;color:var(--p)}
+.tr.h>div:not(:first-child){font-size:11px;color:var(--muted)}
+.tr>div:last-child{font-weight:800}
+.fine{margin-top:16px;font-size:13px;color:var(--muted)}
+.coins{display:flex;flex-wrap:wrap;gap:20px;padding-top:56px}
+.coin{flex:1 1 440px;min-width:0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.coin b.n{font-size:21px;font-weight:800;display:block}.coin small.u{display:block;margin-top:4px;font-size:13px;font-weight:600;color:var(--muted)}
+.coin .v{display:flex;gap:28px;text-align:right}
+.coin .v small{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted)}
+.coin .v b{font-size:26px;font-weight:800;color:var(--p)}
+.sec{padding:88px 0 24px}
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:.14em;color:var(--p)}
+h2.t{margin:10px 0 0;font-size:38px;line-height:1.15;font-weight:800;letter-spacing:-.02em}
+.cols{margin-top:36px;display:flex;flex-wrap:wrap;gap:24px}
+.pil{flex:1 1 320px;min-width:0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px}
+.pil i{display:block;width:48px;height:6px;border-radius:3px;background:var(--a)}
+.pil h3{margin:20px 0 0;font-size:22px;font-weight:800;color:var(--p)}
+.pil p{margin:12px 0 0;font-size:16px;line-height:1.65;color:#2a4146}
+.calc{background:var(--p);border-radius:24px;padding:48px;display:flex;flex-wrap:wrap;gap:40px;align-items:center;color:#fff}
+.calc .l{flex:1 1 320px;min-width:0}
+.calc h2{margin:10px 0 0;font-size:36px;line-height:1.15;font-weight:800;letter-spacing:-.02em}
+.calc p{margin:14px 0 0;font-size:16px;line-height:1.6;color:#cfe3e6}
+.form{flex:1 1 420px;min-width:0;background:#fff;color:var(--ink);border-radius:16px;padding:28px;display:flex;flex-wrap:wrap;gap:16px}
+.f{flex:1 1 160px;display:flex;flex-direction:column;gap:6px}
+.f.full{flex-basis:100%}
+.f label{font-size:13px;font-weight:700;color:var(--muted)}
+.f input,.f select{border:1px solid #b9c9cb;border-radius:10px;padding:14px 16px;font-size:16px;font-weight:600;font-family:inherit;color:var(--ink);background:#fff}
+.f input{font-size:18px;font-weight:700}
+.res{flex-basis:100%;background:#e3f0f1;border-radius:12px;padding:16px 18px;font-size:15px;color:#2a4146;min-height:56px}
+.res b{display:block;font-size:26px;color:var(--p);margin-top:2px}
+.br{flex:1 1 420px;min-width:0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px}
+.tag{display:inline-block;padding:6px 12px;border-radius:999px;background:#e3f0f1;color:var(--p);font-size:12px;font-weight:800;letter-spacing:.08em}
+.br h3{margin:16px 0 0;font-size:23px;font-weight:800}
+.br p{margin:12px 0 0;font-size:16px;line-height:1.6;color:#2a4146}
+.br a.tel{display:inline-block;margin-top:16px;font-size:16px;font-weight:800;color:var(--p)}
+.hours{flex:1 1 420px;min-width:0;background:#e3f0f1;border-radius:16px;padding:32px;display:flex;flex-direction:column;justify-content:center}
+.hours .k{font-size:14px;font-weight:800;letter-spacing:.1em;color:var(--p)}
+.hours div.t{margin-top:14px;font-size:17px;line-height:1.8}
+.req{background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+.req h3{margin:0;font-size:22px;font-weight:800}
+.req p{margin:8px 0 0;font-size:16px;line-height:1.6;color:#2a4146}
+footer{background:var(--deep);color:#c9dadd;font-size:14px;margin-top:72px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;padding-top:32px;padding-bottom:32px}
+footer nav{display:flex;flex-wrap:wrap;gap:24px}
+@media (max-width:760px){
+.wrap{padding:0 20px}
+.reg{font-size:11px}
+.hdr{padding:12px 0}
+.brand{font-size:22px;gap:12px}.logo{width:40px;height:40px}
+.menu{display:none;order:5;width:100%;flex-direction:column;align-items:stretch;gap:14px;padding:8px 0}
+.menu.open{display:flex}.menu a{padding:6px 0}
+.burger{display:flex}
+.hero .wrap{padding-top:36px;padding-bottom:44px;gap:28px}
+h1{font-size:34px}.lead{font-size:16px}
+.ctas{flex-direction:column}
+.board{padding:22px 18px}.tr>div:first-child{font-size:14px}.tr>div:not(:first-child){font-size:16px}
+.coins{padding-top:16px;gap:12px}
+.coin{padding:18px;flex-direction:column;align-items:stretch;gap:12px}.coin .v{justify-content:space-between;text-align:left}.coin .v b{font-size:22px}
+.sec{padding:48px 0 8px}h2.t{font-size:28px}
+.cols{margin-top:22px;gap:14px}.pil{padding:24px 20px}
+.calc{padding:28px 18px;border-radius:20px;gap:20px}.calc h2{font-size:26px}
+.form{padding:18px}
+.br,.hours,.req{padding:22px 20px}
+footer .wrap{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="reg"><div class="wrap">Z&amp;B CASH CENTRO CAMBIARIO S.A. DE C.V. · Registro DGPORPIC: 37521/2025 · CNBV: 3S.4.222 (15189) · Vigencia 02/12/2025 – 02/12/2028</div></div>
+<header>
+<div class="wrap hdr">
+<div class="brand"><div class="logo">LOGO</div>Asecorp</div>
+<nav class="menu" id="menu">
+<a href="#monedas">Monedas</a><a href="#calculadora">Calculadora</a><a href="#sucursales">Ubicaciones</a><a href="#requisitos">Requisitos</a>
+<a class="btn a" href="https://api.whatsapp.com/send?phone=522221300300">Contacto por WhatsApp</a>
+</nav>
+<button class="burger" id="burger" type="button" aria-label="Menú" aria-expanded="false">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E4A52" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+</button>
+</div>
+</header>
+
+<section class="hero">
+<div class="wrap">
+<div class="l">
+<div class="kicker">20 AÑOS A TU SERVICIO</div>
+<h1>El cambio y el servicio son nuestro compromiso.</h1>
+<p class="lead">Centro cambiario en Puebla con el mejor tipo de cambio del sector, atención profesional y operaciones seguras.</p>
+<div class="ctas"><a class="btn a" href="#calculadora">Calcular mi cambio</a><a class="btn o" href="#sucursales">Ver sucursales</a></div>
+</div>
+<div class="board" id="monedas">
+<div class="top"><div>TIPO DE CAMBIO</div><span>MXN</span></div>
+<div class="tr h"><div>DIVISA</div><div>COMPRA</div><div>VENTA</div></div>
+<div id="rates"></div>
+<div class="fine">Todos los precios están sujetos a cambios sin previo aviso.</div>
+</div>
+</div>
+</section>
+
+<div class="wrap"><div class="coins" id="coins"></div></div>
+
+<section class="wrap sec">
+<div class="eyebrow">QUIÉNES SOMOS</div>
+<h2 class="t">Servicio profesional, seguro y al mejor precio</h2>
+<div class="cols">
+<div class="pil"><i></i><h3>Misión</h3><p>Proporcionar el mejor tipo de cambio del sector de divisas, garantizando la calidad del servicio a través de personas altamente capacitadas y un alto nivel de profesionalismo.</p></div>
+<div class="pil"><i></i><h3>Visión</h3><p>Ser el centro cambiario con mayor presencia y reconocido como empresa líder del sector, ofreciendo a los clientes un servicio profesional y totalmente seguro.</p></div>
+<div class="pil"><i></i><h3>Objetivos</h3><p>Mejorar de forma constante nuestros resultados en operaciones y ofrecer el mejor precio para satisfacer las necesidades de nuestros clientes.</p></div>
+</div>
+</section>
+
+<section class="wrap" id="calculadora" style="padding-top:64px">
+<div class="calc">
+<div class="l">
+<div class="kicker">CALCULADORA</div>
+<h2>Calcula tu cambio de divisas</h2>
+<p>Consulta cuánto recibes o necesitas antes de venir a sucursal. Con las tasas de esta página.</p>
+</div>
+<div class="form">
+<div class="f full"><label for="monto">Monto</label><input id="monto" type="text" inputmode="decimal" value="1000"></div>
+<div class="f"><label for="divisa">Divisa</label><select id="divisa"></select></div>
+<div class="f"><label for="op">Operación</label>
+<select id="op"><option value="sell">Vendo mis divisas (recibo pesos)</option><option value="buy">Compro divisas (pago en pesos)</option></select></div>
+<div class="res" id="res" aria-live="polite"></div>
+</div>
+</div>
+</section>
+
+<section class="wrap sec" id="sucursales" style="padding-top:64px">
+<div class="eyebrow">UBICACIONES</div>
+<h2 class="t">Visítanos en Puebla</h2>
+<div class="cols">
+<div class="br"><span class="tag">OFICINA MATRIZ</span><h3>Asecorp Plaza Kentro</h3><p>Av. Atlixcáyotl #3432, Local 16, San Martinito, C.P. 72825, San Andrés Cholula, Puebla</p><a class="tel" href="tel:+522222573313">Tel. 222 257 3313</a></div>
+<div class="br"><span class="tag">SUCURSAL</span><h3>Asecorp Zavaleta</h3><p>Calz. Zavaleta #4105, Santa Cruz Buena Vista, C.P. 72170, Puebla, Pue.</p><a class="tel" href="tel:+522229611694">Tel. 222 961 1694</a></div>
+<div class="hours"><div class="k">HORARIO</div><div class="t">Lunes a viernes <b>9:00 – 18:00 h</b><br>Sábado <b>9:00 – 15:00 h</b></div></div>
+</div>
+</section>
+
+<section class="wrap" id="requisitos" style="padding-top:40px">
+<div class="req">
+<div style="flex:1 1 420px;min-width:0"><h3>¿Qué necesitas para operar?</h3><p>Consulta los requisitos de identificación según el monto de tu operación. [Texto de requisitos por confirmar con el cliente]</p></div>
+<a class="btn p" href="#">Ver requisitos</a>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<div>© 2026 Asecorp · Z&amp;B Cash Centro Cambiario S.A. de C.V.</div>
+<nav><a href="https://www.gob.mx/cnbv/acciones-y-programas/disposiciones-legales-centros-cambiarios">Marco legal</a><a href="#">Aviso de privacidad</a><a href="https://www.gob.mx/cnbv">CNBV</a></nav>
+</div>
+</footer>
+
+<script>
+var RATES = [
+  {code:'USD', name:'Dólar (USD)', buy:17.10, sell:18.40},
+  {code:'EUR', name:'Euro (EUR)', buy:21.30, sell:22.40},
+  {code:'CAD', name:'Dólar canadiense (CAD)', buy:12.00, sell:13.80},
+  {code:'CHF', name:'Franco suizo (CHF)', buy:21.20, sell:23.50},
+  {code:'GBP', name:'Libra esterlina (GBP)', buy:23.90, sell:26.50},
+  {code:'JPY', name:'Yen japonés (JPY)', buy:0.10, sell:0.15}
+];
+var COINS = [
+  {name:'Centenario oro', unit:'Moneda de colección', buy:'$81,000', sell:'$110,000'},
+  {name:'Onza Libertad', unit:'Plata', buy:'$1,000', sell:'$1,950'}
+];
+function money(n){return '$' + n.toFixed(2)}
+document.getElementById('rates').innerHTML = RATES.map(function(r){
+  return '<div class="tr"><div>'+r.name+'</div><div>'+money(r.buy)+'</div><div>'+money(r.sell)+'</div></div>';
+}).join('');
+document.getElementById('coins').innerHTML = COINS.map(function(c){
+  return '<div class="coin"><div><b class="n">'+c.name+'</b><small class="u">'+c.unit+'</small></div>'+
+    '<div class="v"><div><small>COMPRA</small><b>'+c.buy+'</b></div><div><small>VENTA</small><b>'+c.sell+'</b></div></div></div>';
+}).join('');
+var sel = document.getElementById('divisa');
+sel.innerHTML = RATES.map(function(r, i){return '<option value="'+i+'">'+r.name+'</option>'}).join('');
+function calc(){
+  var raw = document.getElementById('monto').value.replace(/,/g, '');
+  var n = parseFloat(raw);
+  var r = RATES[+sel.value];
+  var op = document.getElementById('op').value;
+  var out = document.getElementById('res');
+  if (!isFinite(n) || n <= 0) { out.innerHTML = 'Escribe un monto para calcular.'; return; }
+  if (op === 'sell') {
+    out.innerHTML = 'Recibes en pesos<b>' + money(n * r.buy) + ' MXN</b>';
+  } else {
+    out.innerHTML = 'Pagas en pesos<b>' + money(n * r.sell) + ' MXN</b>';
+  }
+}
+['monto','divisa','op'].forEach(function(id){
+  var el = document.getElementById(id);
+  el.addEventListener('input', calc); el.addEventListener('change', calc);
+});
+calc();
+document.getElementById('burger').addEventListener('click', function(){
+  var open = document.getElementById('menu').classList.toggle('open');
+  this.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+</script>
+</body>
+</html>

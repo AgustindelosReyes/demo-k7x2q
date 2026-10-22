@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Eurodolar Aeropuerto CDMX Terminal 2 (demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--black:#000;--orange:#FBAE44;--gold:#E6B149;--paper:#f6f5f2;--line:#e4e2dc;--muted:#55524a;--ink:#0a0a0a}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+header{background:var(--black);color:#fff}
+.hdr{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{width:52px;height:45px;object-fit:contain}
+.brand b{font-size:26px;letter-spacing:-.02em}
+.brand span{font-size:13px;font-weight:600;letter-spacing:.06em;margin-left:12px}
+.menu{display:flex;align-items:center;gap:26px;font-size:14px;font-weight:600;margin-left:auto}
+.lang{display:flex;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:3px}
+.lang button{border:0;border-radius:999px;padding:0 14px;min-height:36px;font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;background:transparent;color:#fff}
+.lang button[aria-pressed="true"]{background:var(--gold);color:var(--ink)}
+.burger{display:none;width:44px;height:44px;border:1px solid rgba(255,255,255,.4);border-radius:12px;background:transparent;align-items:center;justify-content:center;cursor:pointer}
+.pill{display:inline-block;border-radius:999px;font-weight:700;font-size:15px;padding:16px 28px}
+.gold{background:var(--gold);color:var(--ink)}
+.dark{background:var(--black);color:#fff}
+.outline{border:2px solid #fff;color:#fff;padding:14px 28px;font-weight:600}
+.menu .pill{padding:12px 22px;font-size:14px}
+.term{background:var(--gold);color:var(--ink)}
+.term .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding-top:20px;padding-bottom:20px}
+.term h2{margin:0;font-size:20px;font-weight:800;letter-spacing:-.01em}
+.term p{margin:2px 0 0;font-size:15px;font-weight:600}
+.tbtns{display:flex;flex-wrap:wrap;gap:14px}
+.tbtn{display:flex;align-items:center;justify-content:space-between;gap:16px;min-width:230px;border-radius:16px;padding:14px 22px;min-height:44px}
+.tbtn strong{display:block;font-size:18px;font-weight:800}
+.tbtn small{display:block;margin-top:2px;font-size:12px;font-weight:600}
+.tbtn.t1{background:var(--black);color:#fff}.tbtn.t1 small{color:#d9d9d9}
+.tbtn.t2{background:#fff;color:var(--ink);border:2px solid var(--ink);padding:12px 22px}.tbtn.t2 small{color:var(--muted)}
+.hero{background:var(--black);color:#fff}
+.hero .wrap{display:flex;flex-wrap:wrap;gap:48px;align-items:center;padding-top:48px;padding-bottom:88px}
+.hero .l{flex:1 1 480px;min-width:0}
+.badge{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.08em}
+.badge.o{border:1px solid var(--orange);color:var(--orange)}
+.badge.g{background:var(--gold);color:var(--ink);font-weight:800;padding:8px 16px}
+h1{margin:24px 0 0;font-size:54px;line-height:1.05;font-weight:800;letter-spacing:-.03em}
+h1 em{font-style:normal;color:var(--orange)}
+.lead{margin:22px 0 0;font-size:18px;line-height:1.65;color:#d9d9d9;max-width:520px}
+.ctas{margin-top:32px;display:flex;flex-wrap:wrap;gap:14px}
+.card{flex:1 1 420px;min-width:0;background:#fff;color:var(--ink);border-radius:28px;padding:32px}
+.card .top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;font-weight:800;letter-spacing:.1em}
+.card .top span{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:0}
+.rate{border:1px solid var(--line);border-radius:20px;padding:22px 24px;margin-top:20px}
+.rate .n{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:700}
+.sym{width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex:none}
+.pair{margin-top:18px;display:flex;gap:16px}
+.pair>div{flex:1;border-radius:14px;padding:14px 18px;background:#f1efe9}
+.pair>div.s{background:var(--black);color:#fff}
+.pair small{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted)}
+.pair .s small{color:#d9d9d9}
+.pair b{font-size:34px;font-weight:800}
+.pair .s b{color:var(--orange)}
+.note{margin-top:18px;font-size:12px;color:var(--muted)}
+.sec{padding:72px 0 24px}
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.14em}
+.eyebrow:before{content:"";width:28px;height:4px;border-radius:2px;background:var(--orange)}
+h2.t{margin:12px 0 0;font-size:36px;line-height:1.15;font-weight:800;letter-spacing:-.02em}
+.grid{margin-top:36px;display:flex;flex-wrap:wrap;gap:20px}
+.oc{flex:1 1 340px;min-width:0;background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.oc .nm{font-size:18px;font-weight:700}.oc .un{margin-top:4px;font-size:12px;font-weight:600;color:var(--muted)}
+.oc .v{display:flex;gap:24px;text-align:right}
+.oc small{display:block;font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--muted)}
+.oc b{font-size:24px;font-weight:800}
+.loc{display:flex;flex-wrap:wrap;gap:32px;padding:56px 0 72px}
+.info{flex:1 1 380px;min-width:0;background:#fff;border:1px solid var(--line);border-radius:28px;padding:36px}
+.info h2{margin:12px 0 0;font-size:30px;line-height:1.2;font-weight:800;letter-spacing:-.02em}
+.row{display:flex;gap:16px;align-items:flex-start;font-size:15px;line-height:1.6;margin-top:22px}
+.row svg{flex:none}
+.rows{margin-top:6px}
+.map{flex:1.3 1 460px;min-width:0;min-height:420px;border-radius:28px;overflow:hidden;position:relative;background:var(--line)}
+.map img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.chip{position:absolute;left:16px;top:16px;background:#fff;border-radius:999px;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.06em}
+footer{background:var(--black);color:#d9d9d9;font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;padding-top:32px;padding-bottom:32px}
+footer nav{display:flex;flex-wrap:wrap;gap:24px}
+@media (max-width:760px){
+.wrap{padding:0 20px}
+.hdr{padding:12px 0;gap:8px}
+.brand img{width:42px;height:36px}.brand b{font-size:20px}.brand span{display:block;margin:0;font-size:10px}
+.brand{gap:10px}
+.menu{display:none;order:5;width:100%;flex-direction:column;align-items:stretch;gap:14px;padding:12px 0 8px;margin:0}
+.menu.open{display:flex}
+.menu a{padding:6px 0}
+.menu .pill{text-align:center}
+.lang{margin-left:auto}
+.lang button{min-height:40px;padding:0 12px}
+.burger{display:flex}
+.hero .wrap{padding-top:24px;padding-bottom:44px;gap:28px}
+h1{font-size:34px}
+.badge{font-size:10px}
+.lead{font-size:15px}
+.ctas{flex-direction:column}
+.pill{text-align:center;padding:16px 20px}
+.card{padding:22px 18px;border-radius:24px}
+.rate{padding:16px;margin-top:14px}.rate .n{font-size:15px}.sym{width:34px;height:34px;font-size:16px}
+.pair{gap:10px}.pair>div{padding:12px 14px}.pair b{font-size:28px}
+.sec{padding:44px 0 8px}
+h2.t{font-size:26px}
+.grid{margin-top:22px;gap:12px}
+.oc{padding:16px 18px;flex-direction:column;align-items:stretch;gap:12px}
+.oc .v{justify-content:space-between;text-align:left}.oc b{font-size:22px}
+.loc{padding:36px 0 44px;gap:20px}
+.info{padding:24px 20px;border-radius:24px}.info h2{font-size:23px}
+.row{font-size:14px;margin-top:18px}
+.map{min-height:300px;border-radius:24px}
+.term .wrap{padding-top:20px;padding-bottom:20px}
+.tbtns{width:100%;flex-direction:column;gap:10px}
+.tbtn{min-width:0}
+footer .wrap{flex-direction:column}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap hdr">
+<div class="brand">
+<img src="assets/eurodolar-logo.png" alt="Logo Eurodolar">
+<div><b>Eurodolar</b><span>MONEY EXCHANGE</span></div>
+</div>
+<nav class="menu" id="menu">
+<a href="#divisas" data-i="nav1"></a>
+<a href="#ubicacion" data-i="nav2"></a>
+<a href="#contacto" data-i="nav3"></a>
+<a class="pill gold" href="https://w.app/Z1d7OF" data-i="wa"></a>
+</nav>
+<div class="lang" role="group" aria-label="Idioma / Language">
+<button type="button" data-lang="es" aria-pressed="true" aria-label="Español">ES</button>
+<button type="button" data-lang="en" aria-pressed="false" aria-label="English">EN</button>
+</div>
+<button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+</button>
+</div>
+</header>
+<section class="term" aria-label="Terminal">
+<div class="wrap">
+<div><h2>¿En qué terminal estás?</h2><p>Which terminal are you in?</p></div>
+<div class="tbtns">
+<a class="tbtn t1" href="#terminal-1"><span><strong>Terminal 1</strong><small>Ir a la página de T1 · Go to T1 page</small></span>
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FBAE44" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<a class="tbtn t2" href="#terminal-2"><span><strong>Terminal 2</strong><small>Estás aquí · You are here</small></span>
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></a>
+</div>
+</div>
+</section>
+<section class="hero" id="terminal-2">
+<div class="wrap">
+<div class="l">
+<div class="badge g"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i="badge"></span></div>
+<h1><span data-i="h1a"></span><br><em data-i="h1b"></em></h1>
+<p class="lead" data-i="lead"></p>
+<div class="ctas">
+<a class="pill gold" href="https://w.app/Z1d7OF" data-i="cta1"></a>
+<a class="pill outline" href="#ubicacion" data-i="cta2"></a>
+</div>
+</div>
+<div class="card">
+<div class="top"><div data-i="rateTitle"></div><span data-i="perUnit"></span></div>
+<div id="mainRates"></div>
+<div class="note" data-i="note"></div>
+</div>
+</div>
+</section>
+
+<section class="sec wrap" id="divisas">
+<div class="eyebrow" data-i="otherEyebrow"></div>
+<h2 class="t" data-i="otherH2"></h2>
+<div class="grid" id="otherRates"></div>
+</section>
+
+<div class="wrap loc" id="ubicacion">
+<div class="info">
+<div class="eyebrow" data-i="findEyebrow"></div>
+<h2 data-i="findH2"></h2>
+<div class="rows">
+<div class="row"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><div data-i="addr"></div></div>
+<div class="row"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div data-i="hours"></div></div>
+<div class="row" id="contacto"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><div data-i="phone"></div></div>
+</div>
+<a class="pill dark" style="margin-top:32px" href="https://w.app/Z1d7OF" data-i="contactBtn"></a>
+</div>
+<div class="map">
+<img src="assets/mapa-aicm-t2.png" alt="" id="mapImg">
+<div class="chip" data-i="mapChip"></div>
+</div>
+</div>
+
+<footer>
+<div class="wrap">
+<div data-i="foot"></div>
+<nav>
+<a href="https://www.gob.mx/cnbv/acciones-y-programas/disposiciones-legales-centros-cambiarios" data-i="legal"></a>
+<a href="#" data-i="privacy"></a>
+<a href="https://www.gob.mx/cnbv">CNBV</a>
+</nav>
+</div>
+</footer>
+
+<script>
+var I18N = {"es": {"nav1": "Divisas", "nav2": "Ubicación", "nav3": "Contacto", "wa": "Escríbenos por WhatsApp", "rateTitle": "TIPO DE CAMBIO HOY", "perUnit": "MXN por unidad", "buy": "COMPRA", "sell": "VENTA", "note": "Precios sujetos a cambio sin previo aviso.", "otherEyebrow": "OTRAS DIVISAS Y MONEDAS", "otherH2": "Más opciones para tu viaje o tu inversión", "findEyebrow": "ENCUÉNTRANOS", "contactBtn": "Contactar por WhatsApp", "mapChip": "Mapa de ejemplo", "legal": "Marco legal", "privacy": "Aviso de privacidad", "badge": "ABIERTO LAS 24 HORAS, TODOS LOS DÍAS", "h1a": "Cambia divisas", "h1b": "antes de tu vuelo.", "lead": "Estamos en el Aeropuerto Internacional de la Ciudad de México, Terminal 2. Compra y venta de dólares, euros, libras y monedas de colección a cualquier hora.", "cta1": "Contactar por WhatsApp", "cta2": "Cómo encontrarnos", "findH2": "Aeropuerto Ciudad de México, Terminal 2", "addr": "Aeropuerto Internacional de la Ciudad de México<br>Terminal 2", "hours": "Lunes a domingo<br><b>Abierto las 24 horas</b>", "phone": "Teléfono<br><b>[Confirmar número]</b>", "mapAlt": "Mapa de la ubicación de Eurodolar en la Terminal 2", "foot": "© 2026 Eurodolar · Aeropuerto CDMX T2"}, "en": {"nav1": "Currencies", "nav2": "Location", "nav3": "Contact", "wa": "Message us on WhatsApp", "rateTitle": "TODAY'S EXCHANGE RATE", "perUnit": "MXN per unit", "buy": "WE BUY", "sell": "WE SELL", "note": "Rates are subject to change without notice.", "otherEyebrow": "OTHER CURRENCIES AND COINS", "otherH2": "More options for your trip or your investment", "findEyebrow": "FIND US", "contactBtn": "Contact us on WhatsApp", "mapChip": "Example map", "legal": "Legal framework", "privacy": "Privacy notice", "badge": "OPEN 24 HOURS, EVERY DAY", "h1a": "Exchange currency", "h1b": "before your flight.", "lead": "We are at Mexico City International Airport, Terminal 2. We buy and sell US dollars, euros, pounds and collector coins at any hour.", "cta1": "Contact us on WhatsApp", "cta2": "How to find us", "findH2": "Mexico City Airport, Terminal 2", "addr": "Mexico City International Airport<br>Terminal 2", "hours": "Monday to Sunday<br><b>Open 24 hours</b>", "phone": "Phone<br><b>[To be confirmed]</b>", "mapAlt": "Map of the Eurodolar location in Terminal 2", "foot": "© 2026 Eurodolar · CDMX Airport T2"}};
+var RATES = {"main": [{"sym": "$", "name": {"es": "Dólar estadounidense (USD)", "en": "US Dollar (USD)"}, "buy": "18.00", "sell": "19.50"}, {"sym": "€", "name": {"es": "Euro (EUR)", "en": "Euro (EUR)"}, "buy": "22.47", "sell": "23.60"}], "other": [{"name": {"es": "Libra esterlina", "en": "Pound Sterling"}, "unit": {"es": "GBP", "en": "GBP"}, "buy": "26.15", "sell": "27.25"}, {"name": {"es": "Centenario oro", "en": "Gold Centenario"}, "unit": {"es": "Moneda de colección", "en": "Collector coin"}, "buy": "32,000", "sell": "43,000"}, {"name": {"es": "Onza Libertad", "en": "Libertad Ounce"}, "unit": {"es": "Plata", "en": "Silver"}, "buy": "300.00", "sell": "700.00"}]};
+var lang = 'es';
+function esc(s){return String(s)}
+function render(){
+  var d = I18N[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i]').forEach(function(el){
+    var k = el.getAttribute('data-i');
+    if (d[k] !== undefined) el.innerHTML = d[k];
+  });
+  document.getElementById('mapImg').alt = d.mapAlt;
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+  });
+  document.getElementById('mainRates').innerHTML = RATES.main.map(function(r){
+    return '<div class="rate"><div class="n"><div class="sym">'+r.sym+'</div><div>'+r.name[lang]+'</div></div>'+
+      '<div class="pair"><div><small>'+d.buy+'</small><b>'+r.buy+'</b></div><div class="s"><small>'+d.sell+'</small><b>'+r.sell+'</b></div></div></div>';
+  }).join('');
+  document.getElementById('otherRates').innerHTML = RATES.other.map(function(r){
+    return '<div class="oc"><div><div class="nm">'+r.name[lang]+'</div><div class="un">'+r.unit[lang]+'</div></div>'+
+      '<div class="v"><div><small>'+d.buy+'</small><b>'+r.buy+'</b></div><div><small>'+d.sell+'</small><b>'+r.sell+'</b></div></div></div>';
+  }).join('');
+}
+document.querySelectorAll('.lang button').forEach(function(b){
+  b.addEventListener('click', function(){
+    lang = b.getAttribute('data-lang');
+    try { localStorage.setItem('eurodolar-lang', lang); } catch (e) {}
+    render();
+  });
+});
+document.getElementById('burger').addEventListener('click', function(){
+  var m = document.getElementById('menu');
+  var open = m.classList.toggle('open');
+  this.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+try { var saved = localStorage.getItem('eurodolar-lang'); if (saved === 'en' || saved === 'es') lang = saved; } catch (e) {}
+render();
+</script>
+</body>
+</html>
