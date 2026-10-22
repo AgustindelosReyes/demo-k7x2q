@@ -37,7 +37,10 @@ h1{margin:18px 0 0;font-size:54px;line-height:1.05;font-weight:800;letter-spacin
 .board .top span{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:0}
 .tr{display:flex;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
 .tr.h{padding:20px 0 10px;font-size:11px;font-weight:700;letter-spacing:.1em;color:var(--muted);border-bottom:2px solid var(--p)}
-.tr>div:first-child{flex:2;font-size:16px;font-weight:700;padding-right:8px}
+.tr>div:first-child{flex:2;display:flex;align-items:center;gap:12px;font-size:16px;font-weight:700;padding-right:8px}
+.fl{display:block;width:44px;height:33px;border-radius:6px;object-fit:cover;box-shadow:0 0 0 1px rgba(0,0,0,.14),0 2px 5px rgba(0,0,0,.14);flex:none}
+.ci{width:48px;height:48px;flex:none}
+.coin .hd{display:flex;align-items:center;gap:14px;min-width:0}
 .tr.h>div:first-child{font-size:11px;font-weight:700}
 .tr>div:not(:first-child){flex:1;text-align:right;font-size:18px;font-weight:700;color:var(--p)}
 .tr.h>div:not(:first-child){font-size:11px;color:var(--muted)}
@@ -94,7 +97,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:24px}
 .hero .wrap{padding-top:36px;padding-bottom:44px;gap:28px}
 h1{font-size:34px}.lead{font-size:16px}
 .ctas{flex-direction:column}
-.board{padding:22px 18px}.tr>div:first-child{font-size:14px}.tr>div:not(:first-child){font-size:16px}
+.board{padding:22px 18px}.tr>div:first-child{font-size:14px;gap:8px}.fl{width:34px;height:26px}.ci{width:44px;height:44px}.tr>div:not(:first-child){font-size:16px}
 .coins{padding-top:16px;gap:12px}
 .coin{padding:18px;flex-direction:column;align-items:stretch;gap:12px}.coin .v{justify-content:space-between;text-align:left}.coin .v b{font-size:22px}
 .sec{padding-top:48px;padding-bottom:8px}h2.t{font-size:28px}
@@ -193,23 +196,28 @@ footer .wrap{flex-direction:column}
 
 <script>
 var RATES = [
-  {code:'USD', name:'Dólar (USD)', buy:17.10, sell:18.40},
-  {code:'EUR', name:'Euro (EUR)', buy:21.30, sell:22.40},
-  {code:'CAD', name:'Dólar canadiense (CAD)', buy:12.00, sell:13.80},
-  {code:'CHF', name:'Franco suizo (CHF)', buy:21.20, sell:23.50},
-  {code:'GBP', name:'Libra esterlina (GBP)', buy:23.90, sell:26.50},
-  {code:'JPY', name:'Yen japonés (JPY)', buy:0.10, sell:0.15}
+  {code:'USD', flag:'us', name:'Dólar (USD)', buy:17.10, sell:18.40},
+  {code:'EUR', flag:'eu', name:'Euro (EUR)', buy:21.30, sell:22.40},
+  {code:'CAD', flag:'ca', name:'Dólar canadiense (CAD)', buy:12.00, sell:13.80},
+  {code:'CHF', flag:'ch', name:'Franco suizo (CHF)', buy:21.20, sell:23.50},
+  {code:'GBP', flag:'gb', name:'Libra esterlina (GBP)', buy:23.90, sell:26.50},
+  {code:'JPY', flag:'jp', name:'Yen japonés (JPY)', buy:0.10, sell:0.15}
 ];
 var COINS = [
-  {name:'Centenario oro', unit:'Moneda de colección', buy:'$81,000', sell:'$110,000'},
-  {name:'Onza Libertad', unit:'Plata', buy:'$1,000', sell:'$1,950'}
+  {name:'Centenario oro', unit:'Moneda de colección', coin:'gold', buy:'$81,000', sell:'$110,000'},
+  {name:'Onza Libertad', unit:'Plata', coin:'silver', buy:'$1,000', sell:'$1,950'}
 ];
+function cicon(type){
+  var gold = type === 'gold';
+  var f = gold ? '#E6B149' : '#C9CDD2', s = gold ? '#8A5F12' : '#5E646B';
+  return '<svg class="ci" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="'+f+'" stroke="'+s+'" stroke-width="2"/><circle cx="24" cy="24" r="16" fill="none" stroke="'+s+'" stroke-width="1.5"/><text x="24" y="29" text-anchor="middle" font-size="14" font-weight="800" font-family="Plus Jakarta Sans,sans-serif" fill="'+s+'">'+(gold ? 'Au' : 'Ag')+'</text></svg>';
+}
 function money(n){return '$' + n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}
 document.getElementById('rates').innerHTML = RATES.map(function(r){
-  return '<div class="tr"><div>'+r.name+'</div><div>'+money(r.buy)+'</div><div>'+money(r.sell)+'</div></div>';
+  return '<div class="tr"><div><img class="fl" src="assets/flags/'+r.flag+'.svg" alt="" width="44" height="33"><span>'+r.name+'</span></div><div>'+money(r.buy)+'</div><div>'+money(r.sell)+'</div></div>';
 }).join('');
 document.getElementById('coins').innerHTML = COINS.map(function(c){
-  return '<div class="coin"><div><b class="n">'+c.name+'</b><small class="u">'+c.unit+'</small></div>'+
+  return '<div class="coin"><div class="hd">'+cicon(c.coin)+'<div><b class="n">'+c.name+'</b><small class="u">'+c.unit+'</small></div></div>'+
     '<div class="v"><div><small>COMPRA</small><b>'+c.buy+'</b></div><div><small>VENTA</small><b>'+c.sell+'</b></div></div></div>';
 }).join('');
 var sel = document.getElementById('divisa');

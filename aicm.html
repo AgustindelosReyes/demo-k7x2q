@@ -54,7 +54,10 @@ h1 em{font-style:normal;color:var(--orange)}
 .card .top span{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:0}
 .rate{border:1px solid var(--line);border-radius:20px;padding:22px 24px;margin-top:20px}
 .rate .n{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:700}
-.sym{width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex:none}
+.flag{display:block;width:64px;height:48px;border-radius:8px;object-fit:cover;box-shadow:0 0 0 1px rgba(0,0,0,.14),0 2px 6px rgba(0,0,0,.14);flex:none}
+.flag.sm{width:52px;height:39px;border-radius:7px}
+.coin{width:48px;height:48px;flex:none}
+.oc .hd{display:flex;align-items:center;gap:14px;min-width:0}
 .pair{margin-top:18px;display:flex;gap:16px}
 .pair>div{flex:1;border-radius:14px;padding:14px 18px;background:#f1efe9}
 .pair>div.s{background:var(--black);color:#fff}
@@ -104,7 +107,7 @@ h1{font-size:34px}
 .ctas{flex-direction:column}
 .pill{text-align:center;padding:16px 20px}
 .card{padding:22px 18px;border-radius:24px}
-.rate{padding:16px;margin-top:14px}.rate .n{font-size:15px}.sym{width:34px;height:34px;font-size:16px}
+.rate{padding:16px;margin-top:14px}.rate .n{font-size:15px}.flag{width:52px;height:39px}.flag.sm{width:48px;height:36px}.coin{width:44px;height:44px}
 .pair{gap:10px}.pair>div{padding:12px 14px}.pair b{font-size:28px}
 .sec{padding-top:44px;padding-bottom:8px}
 h2.t{font-size:26px}
@@ -210,9 +213,14 @@ footer .wrap{flex-direction:column}
 
 <script>
 var I18N = {"es": {"nav1": "Divisas", "nav2": "Ubicación", "nav3": "Contacto", "wa": "Escríbenos por WhatsApp", "rateTitle": "TIPO DE CAMBIO HOY", "perUnit": "MXN por unidad", "buy": "COMPRA", "sell": "VENTA", "note": "Precios sujetos a cambio sin previo aviso.", "otherEyebrow": "OTRAS DIVISAS Y MONEDAS", "otherH2": "Más opciones para tu viaje o tu inversión", "findEyebrow": "ENCUÉNTRANOS", "contactBtn": "Contactar por WhatsApp", "mapChip": "Mapa de ejemplo", "legal": "Marco legal", "privacy": "Aviso de privacidad", "badge": "ABIERTO LAS 24 HORAS, TODOS LOS DÍAS", "h1a": "Cambia divisas", "h1b": "antes de tu vuelo.", "lead": "Estamos en el Aeropuerto Internacional de la Ciudad de México, Terminal 2. Compra y venta de dólares, euros, libras y monedas de colección a cualquier hora.", "cta1": "Contactar por WhatsApp", "cta2": "Cómo encontrarnos", "findH2": "Aeropuerto Ciudad de México, Terminal 2", "addr": "Aeropuerto Internacional de la Ciudad de México<br>Terminal 2", "hours": "Lunes a domingo<br><b>Abierto las 24 horas</b>", "phone": "Teléfono<br><b>[Confirmar número]</b>", "mapAlt": "Mapa de la ubicación de Eurodolar en la Terminal 2", "foot": "© 2026 Eurodolar · Aeropuerto CDMX T2"}, "en": {"nav1": "Currencies", "nav2": "Location", "nav3": "Contact", "wa": "Message us on WhatsApp", "rateTitle": "TODAY'S EXCHANGE RATE", "perUnit": "MXN per unit", "buy": "WE BUY", "sell": "WE SELL", "note": "Rates are subject to change without notice.", "otherEyebrow": "OTHER CURRENCIES AND COINS", "otherH2": "More options for your trip or your investment", "findEyebrow": "FIND US", "contactBtn": "Contact us on WhatsApp", "mapChip": "Example map", "legal": "Legal framework", "privacy": "Privacy notice", "badge": "OPEN 24 HOURS, EVERY DAY", "h1a": "Exchange currency", "h1b": "before your flight.", "lead": "We are at Mexico City International Airport, Terminal 2. We buy and sell US dollars, euros, pounds and collector coins at any hour.", "cta1": "Contact us on WhatsApp", "cta2": "How to find us", "findH2": "Mexico City Airport, Terminal 2", "addr": "Mexico City International Airport<br>Terminal 2", "hours": "Monday to Sunday<br><b>Open 24 hours</b>", "phone": "Phone<br><b>[To be confirmed]</b>", "mapAlt": "Map of the Eurodolar location in Terminal 2", "foot": "© 2026 Eurodolar · CDMX Airport T2"}};
-var RATES = {"main": [{"sym": "$", "name": {"es": "Dólar estadounidense (USD)", "en": "US Dollar (USD)"}, "buy": "18.00", "sell": "19.50"}, {"sym": "€", "name": {"es": "Euro (EUR)", "en": "Euro (EUR)"}, "buy": "22.47", "sell": "23.60"}], "other": [{"name": {"es": "Libra esterlina", "en": "Pound Sterling"}, "unit": {"es": "GBP", "en": "GBP"}, "buy": "26.15", "sell": "27.25"}, {"name": {"es": "Centenario oro", "en": "Gold Centenario"}, "unit": {"es": "Moneda de colección", "en": "Collector coin"}, "buy": "32,000", "sell": "43,000"}, {"name": {"es": "Onza Libertad", "en": "Libertad Ounce"}, "unit": {"es": "Plata", "en": "Silver"}, "buy": "300.00", "sell": "700.00"}]};
+var RATES = {"main": [{"sym": "$", "flag": "us", "name": {"es": "Dólar estadounidense (USD)", "en": "US Dollar (USD)"}, "buy": "18.00", "sell": "19.50"}, {"sym": "€", "flag": "eu", "name": {"es": "Euro (EUR)", "en": "Euro (EUR)"}, "buy": "22.47", "sell": "23.60"}], "other": [{"name": {"es": "Libra esterlina", "en": "Pound Sterling"}, "unit": {"es": "GBP", "en": "GBP"}, "flag": "gb", "buy": "26.15", "sell": "27.25"}, {"name": {"es": "Centenario oro", "en": "Gold Centenario"}, "unit": {"es": "Moneda de colección", "en": "Collector coin"}, "coin": "gold", "buy": "32,000", "sell": "43,000"}, {"name": {"es": "Onza Libertad", "en": "Libertad Ounce"}, "unit": {"es": "Plata", "en": "Silver"}, "coin": "silver", "buy": "300.00", "sell": "700.00"}]};
 var lang = 'es';
-function esc(s){return String(s)}
+function icon(r, cls){
+  if (r.flag) return '<img class="flag'+cls+'" src="assets/flags/'+r.flag+'.svg" alt="" width="64" height="48">';
+  var gold = r.coin === 'gold';
+  var f = gold ? '#E6B149' : '#C9CDD2', s = gold ? '#8A5F12' : '#5E646B';
+  return '<svg class="coin" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="'+f+'" stroke="'+s+'" stroke-width="2"/><circle cx="24" cy="24" r="16" fill="none" stroke="'+s+'" stroke-width="1.5"/><text x="24" y="29" text-anchor="middle" font-size="14" font-weight="800" font-family="Montserrat,sans-serif" fill="'+s+'">'+(gold ? 'Au' : 'Ag')+'</text></svg>';
+}
 function render(){
   var d = I18N[lang];
   document.documentElement.lang = lang;
@@ -225,11 +233,11 @@ function render(){
     b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
   });
   document.getElementById('mainRates').innerHTML = RATES.main.map(function(r){
-    return '<div class="rate"><div class="n"><div class="sym">'+r.sym+'</div><div>'+r.name[lang]+'</div></div>'+
+    return '<div class="rate"><div class="n">'+icon(r, '')+'<div>'+r.name[lang]+'</div></div>'+
       '<div class="pair"><div><small>'+d.buy+'</small><b>'+r.buy+'</b></div><div class="s"><small>'+d.sell+'</small><b>'+r.sell+'</b></div></div></div>';
   }).join('');
   document.getElementById('otherRates').innerHTML = RATES.other.map(function(r){
-    return '<div class="oc"><div><div class="nm">'+r.name[lang]+'</div><div class="un">'+r.unit[lang]+'</div></div>'+
+    return '<div class="oc"><div class="hd">'+icon(r, ' sm')+'<div><div class="nm">'+r.name[lang]+'</div><div class="un">'+r.unit[lang]+'</div></div></div>'+
       '<div class="v"><div><small>'+d.buy+'</small><b>'+r.buy+'</b></div><div><small>'+d.sell+'</small><b>'+r.sell+'</b></div></div></div>';
   }).join('');
 }

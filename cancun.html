@@ -54,7 +54,10 @@ h1 em{font-style:normal;color:var(--orange)}
 .card .top span{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:0}
 .rate{border:1px solid var(--line);border-radius:20px;padding:22px 24px;margin-top:20px}
 .rate .n{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:700}
-.sym{width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex:none}
+.flag{display:block;width:64px;height:48px;border-radius:8px;object-fit:cover;box-shadow:0 0 0 1px rgba(0,0,0,.14),0 2px 6px rgba(0,0,0,.14);flex:none}
+.flag.sm{width:52px;height:39px;border-radius:7px}
+.coin{width:48px;height:48px;flex:none}
+.oc .hd{display:flex;align-items:center;gap:14px;min-width:0}
 .pair{margin-top:18px;display:flex;gap:16px}
 .pair>div{flex:1;border-radius:14px;padding:14px 18px;background:#f1efe9}
 .pair>div.s{background:var(--black);color:#fff}
@@ -104,7 +107,7 @@ h1{font-size:34px}
 .ctas{flex-direction:column}
 .pill{text-align:center;padding:16px 20px}
 .card{padding:22px 18px;border-radius:24px}
-.rate{padding:16px;margin-top:14px}.rate .n{font-size:15px}.sym{width:34px;height:34px;font-size:16px}
+.rate{padding:16px;margin-top:14px}.rate .n{font-size:15px}.flag{width:52px;height:39px}.flag.sm{width:48px;height:36px}.coin{width:44px;height:44px}
 .pair{gap:10px}.pair>div{padding:12px 14px}.pair b{font-size:28px}
 .sec{padding-top:44px;padding-bottom:8px}
 h2.t{font-size:26px}
@@ -200,9 +203,14 @@ footer .wrap{flex-direction:column}
 
 <script>
 var I18N = {"es": {"nav1": "Divisas", "nav2": "Ubicación", "nav3": "Contacto", "wa": "Escríbenos por WhatsApp", "rateTitle": "TIPO DE CAMBIO HOY", "perUnit": "MXN por unidad", "buy": "COMPRA", "sell": "VENTA", "note": "Precios sujetos a cambio sin previo aviso.", "otherEyebrow": "OTRAS DIVISAS Y MONEDAS", "otherH2": "Más opciones para tu viaje o tu inversión", "findEyebrow": "ENCUÉNTRANOS", "contactBtn": "Contactar por WhatsApp", "mapChip": "Mapa de ejemplo", "legal": "Marco legal", "privacy": "Aviso de privacidad", "badge": "PUERTO CANCÚN · LUNES A SÁBADO, 9 A 18 H", "h1a": "Cambia tus divisas", "h1b": "frente a la marina.", "lead": "Compra y venta de dólares, euros, libras, francos suizos y monedas de colección. Tipos de cambio claros, atención directa.", "cta1": "Llamar al 998 810 4176", "cta2": "Cómo llegar", "findH2": "Plaza Espacio, frente a Marina Puerto Cancún", "addr": "Av. Puerto Cancún Sur, L PB F<br>77500 Cancún, Q.R., México", "hours": "Lunes a sábado<br><b>9:00 a 18:00 h</b>", "phone": "Cel. / WhatsApp<br><b>998 810 4176</b>", "mapAlt": "Mapa de la ubicación de la sucursal", "foot": "© 2026 Eurodolar · Puerto Cancún"}, "en": {"nav1": "Currencies", "nav2": "Location", "nav3": "Contact", "wa": "Message us on WhatsApp", "rateTitle": "TODAY'S EXCHANGE RATE", "perUnit": "MXN per unit", "buy": "WE BUY", "sell": "WE SELL", "note": "Rates are subject to change without notice.", "otherEyebrow": "OTHER CURRENCIES AND COINS", "otherH2": "More options for your trip or your investment", "findEyebrow": "FIND US", "contactBtn": "Contact us on WhatsApp", "mapChip": "Example map", "legal": "Legal framework", "privacy": "Privacy notice", "badge": "PUERTO CANCÚN · MONDAY TO SATURDAY, 9 AM – 6 PM", "h1a": "Exchange your currency", "h1b": "right by the marina.", "lead": "We buy and sell US dollars, euros, pounds, Swiss francs and collector coins. Clear rates, direct service.", "cta1": "Call 998 810 4176", "cta2": "Get directions", "findH2": "Plaza Espacio, across from Puerto Cancún Marina", "addr": "Av. Puerto Cancún Sur, L PB F<br>77500 Cancún, Q.R., México", "hours": "Monday to Saturday<br><b>9:00 AM – 6:00 PM</b>", "phone": "Cell / WhatsApp<br><b>998 810 4176</b>", "mapAlt": "Map of the branch location", "foot": "© 2026 Eurodolar · Puerto Cancún"}};
-var RATES = {"main": [{"sym": "$", "name": {"es": "Dólar estadounidense (USD)", "en": "US Dollar (USD)"}, "buy": "17.20", "sell": "18.30"}, {"sym": "€", "name": {"es": "Euro (EUR)", "en": "Euro (EUR)"}, "buy": "20.50", "sell": "21.80"}], "other": [{"name": {"es": "Dólar canadiense", "en": "Canadian Dollar"}, "unit": {"es": "CAD", "en": "CAD"}, "buy": "11.60", "sell": "12.50"}, {"name": {"es": "Libra esterlina", "en": "Pound Sterling"}, "unit": {"es": "GBP", "en": "GBP"}, "buy": "23.00", "sell": "25.60"}, {"name": {"es": "Franco suizo", "en": "Swiss Franc"}, "unit": {"es": "CHF", "en": "CHF"}, "buy": "19.00", "sell": "23.00"}, {"name": {"es": "Centenario oro", "en": "Gold Centenario"}, "unit": {"es": "Moneda de colección", "en": "Collector coin"}, "buy": "55,000", "sell": "75,000"}, {"name": {"es": "Onza Libertad", "en": "Libertad Ounce"}, "unit": {"es": "Plata", "en": "Silver"}, "buy": "300.00", "sell": "700.00"}]};
+var RATES = {"main": [{"sym": "$", "flag": "us", "name": {"es": "Dólar estadounidense (USD)", "en": "US Dollar (USD)"}, "buy": "17.20", "sell": "18.30"}, {"sym": "€", "flag": "eu", "name": {"es": "Euro (EUR)", "en": "Euro (EUR)"}, "buy": "20.50", "sell": "21.80"}], "other": [{"name": {"es": "Dólar canadiense", "en": "Canadian Dollar"}, "unit": {"es": "CAD", "en": "CAD"}, "flag": "ca", "buy": "11.60", "sell": "12.50"}, {"name": {"es": "Libra esterlina", "en": "Pound Sterling"}, "unit": {"es": "GBP", "en": "GBP"}, "flag": "gb", "buy": "23.00", "sell": "25.60"}, {"name": {"es": "Franco suizo", "en": "Swiss Franc"}, "unit": {"es": "CHF", "en": "CHF"}, "flag": "ch", "buy": "19.00", "sell": "23.00"}, {"name": {"es": "Centenario oro", "en": "Gold Centenario"}, "unit": {"es": "Moneda de colección", "en": "Collector coin"}, "coin": "gold", "buy": "55,000", "sell": "75,000"}, {"name": {"es": "Onza Libertad", "en": "Libertad Ounce"}, "unit": {"es": "Plata", "en": "Silver"}, "coin": "silver", "buy": "300.00", "sell": "700.00"}]};
 var lang = 'es';
-function esc(s){return String(s)}
+function icon(r, cls){
+  if (r.flag) return '<img class="flag'+cls+'" src="assets/flags/'+r.flag+'.svg" alt="" width="64" height="48">';
+  var gold = r.coin === 'gold';
+  var f = gold ? '#E6B149' : '#C9CDD2', s = gold ? '#8A5F12' : '#5E646B';
+  return '<svg class="coin" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="'+f+'" stroke="'+s+'" stroke-width="2"/><circle cx="24" cy="24" r="16" fill="none" stroke="'+s+'" stroke-width="1.5"/><text x="24" y="29" text-anchor="middle" font-size="14" font-weight="800" font-family="Montserrat,sans-serif" fill="'+s+'">'+(gold ? 'Au' : 'Ag')+'</text></svg>';
+}
 function render(){
   var d = I18N[lang];
   document.documentElement.lang = lang;
@@ -215,11 +223,11 @@ function render(){
     b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
   });
   document.getElementById('mainRates').innerHTML = RATES.main.map(function(r){
-    return '<div class="rate"><div class="n"><div class="sym">'+r.sym+'</div><div>'+r.name[lang]+'</div></div>'+
+    return '<div class="rate"><div class="n">'+icon(r, '')+'<div>'+r.name[lang]+'</div></div>'+
       '<div class="pair"><div><small>'+d.buy+'</small><b>'+r.buy+'</b></div><div class="s"><small>'+d.sell+'</small><b>'+r.sell+'</b></div></div></div>';
   }).join('');
   document.getElementById('otherRates').innerHTML = RATES.other.map(function(r){
-    return '<div class="oc"><div><div class="nm">'+r.name[lang]+'</div><div class="un">'+r.unit[lang]+'</div></div>'+
+    return '<div class="oc"><div class="hd">'+icon(r, ' sm')+'<div><div class="nm">'+r.name[lang]+'</div><div class="un">'+r.unit[lang]+'</div></div></div>'+
       '<div class="v"><div><small>'+d.buy+'</small><b>'+r.buy+'</b></div><div><small>'+d.sell+'</small><b>'+r.sell+'</b></div></div></div>';
   }).join('');
 }
